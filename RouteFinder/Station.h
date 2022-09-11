@@ -30,19 +30,19 @@ public:
 		name = s.name;
 		return s;
 	}
-	bool operator==(const Station& s) {
+	bool operator==(const Station s) const{
 		if (name.size() != s.name.size())return false;
-		int length =  name.size();
-		size_t i = 0;
+		int length = name.size();
+		int i = 0;
 		for (; i < length; i++)
 		{
-			if (tolower( s.name[i]) !=tolower(name[i]))return false;
+			if (tolower(s.name[i]) != tolower(name[i]))return false;
 		}
 		return true;
 	}
-	bool operator>(const Station& s) {
+	bool operator>(const Station s) const{
 		int length = (s.name < name ? s.name.size() : name.size());
-		size_t i = 0;
+		int i = 0;
 		for (; i < length; i++)
 		{
 			if (tolower(s.name[i]) < tolower(name[i]))return true;
@@ -51,7 +51,7 @@ public:
 		if (s.name.size() == name.size())return false;
 		return s.name.size() < name.size();
 	}
-	bool operator>=(const Station& s) {
+	bool operator>=(const Station s) const{
 		int length = (s.name < name ? s.name.size() : name.size());
 		size_t i = 0;
 		for (; i < length; i++)
@@ -62,7 +62,7 @@ public:
 		if (s.name.size() == name.size())return true;
 		return s.name.size() < name.size();
 	}
-	bool operator<=(const Station& s) {
+	bool operator<=(const Station s) const{
 		int length = (s.name < name ? s.name.size() : name.size());
 		size_t i = 0;
 		for (; i < length; i++)
@@ -73,7 +73,7 @@ public:
 		if (s.name.size() == name.size())return true;
 		return s.name.size() > name.size();
 	}
-	bool operator<(const Station& s) {
+	bool operator<(const Station s) const {
 		int length = (s.name < name ? s.name.size() : name.size());
 		size_t i = 0;
 		for (; i < length; i++)
@@ -84,5 +84,6 @@ public:
 		if (s.name.size() == name.size())return false;
 		return s.name.size() > name.size();
 	}
+	
 };
 

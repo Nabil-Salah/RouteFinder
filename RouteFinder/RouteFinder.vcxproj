@@ -134,6 +134,7 @@
     <ClInclude Include="Station.h" />
     <ClInclude Include="Subway.h" />
     <ClInclude Include="SubwayLoader.h" />
+    <ClInclude Include="SubwayPrinter.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ObjectvilleSubway.txt" />

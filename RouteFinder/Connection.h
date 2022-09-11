@@ -13,7 +13,7 @@ public:
 	Connection(int cost) {
 		this->cost = 0;
 	}
-	Connection(Station station1, Station station2, string lineName, int cost = 0) {
+	Connection(Station station1, Station station2, string lineName, int cost = 1) {
 		this->station1 = station1;
 		this->station2 = station2;
 		this->lineName = lineName;
@@ -31,11 +31,11 @@ public:
 		lineName = connection.lineName;
 		cost = connection.cost;
 	}
-	Connection operator=(Connection& connection) {
-		this->station1 = connection.getStation1();
-		this->station2 = connection.getStation2();
-		this->lineName = connection.getLineName();
-		this->cost = connection.getCost();
+	Connection operator=(const Connection& connection) {
+		this->station1 = connection.station1;
+		this->station2 = connection.station2;
+		this->lineName = connection.lineName;
+		this->cost = connection.cost;
 		return connection;
 	}
 	bool operator==(Connection& connection) {
