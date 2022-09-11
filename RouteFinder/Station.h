@@ -30,60 +30,59 @@ public:
 		name = s.name;
 		return s;
 	}
-	bool isequals(const string& a, const string& b)
-	{
-		return std::equal(a.begin(), a.end(),
-			b.begin(), b.end(),
-			[](char a, char b) {
-				return tolower(a) == tolower(b);
-			});
+	bool operator==(const Station& s) {
+		if (name.size() != s.name.size())return false;
+		int length =  name.size();
+		size_t i = 0;
+		for (; i < length; i++)
+		{
+			if (tolower( s.name[i]) !=tolower(name[i]))return false;
+		}
+		return true;
 	}
-	bool isgreater(const string& a, const string& b)
-	{
-		return std::equal(a.begin(), a.end(),
-			b.begin(), b.end(),
-			[](char a, char b) {
-				return tolower(a) > tolower(b);
-			});
+	bool operator>(const Station& s) {
+		int length = (s.name < name ? s.name.size() : name.size());
+		size_t i = 0;
+		for (; i < length; i++)
+		{
+			if (tolower(s.name[i]) < tolower(name[i]))return true;
+			else if (tolower(s.name[i]) > tolower(name[i]))return false;
+		}
+		if (s.name.size() == name.size())return false;
+		return s.name.size() < name.size();
 	}
-	bool issmaller(const string& a, const string& b)
-	{
-		return std::equal(a.begin(), a.end(),
-			b.begin(), b.end(),
-			[](char a, char b) {
-				return tolower(a) < tolower(b);
-			});
+	bool operator>=(const Station& s) {
+		int length = (s.name < name ? s.name.size() : name.size());
+		size_t i = 0;
+		for (; i < length; i++)
+		{
+			if (tolower(s.name[i]) < tolower(name[i]))return true;
+			else if (tolower(s.name[i]) > tolower(name[i]))return false;
+		}
+		if (s.name.size() == name.size())return true;
+		return s.name.size() < name.size();
 	}
-	bool operator==(Station& s) {
-		return isequals(s.name, this->name);
+	bool operator<=(const Station& s) {
+		int length = (s.name < name ? s.name.size() : name.size());
+		size_t i = 0;
+		for (; i < length; i++)
+		{
+			if (tolower(s.name[i]) > tolower(name[i]))return true;
+			else if (tolower(s.name[i]) < tolower(name[i]))return false;
+		}
+		if (s.name.size() == name.size())return true;
+		return s.name.size() > name.size();
 	}
-	bool operator>(Station& s) {
-		return isgreater(s.name, this->name);
-	}
-	bool operator>=(Station& s) {
-		return isgreater(s.name, this->name) || isequals(s.name, this->name);
-	}
-	bool operator<=(Station& s) {
-		return issmaller(s.name, this->name) || isequals(s.name, this->name);
-	}
-	bool operator<(Station& s) {
-		return issmaller(s.name, this->name);
-	}
-
-	bool operator>(const string& s) {
-		return isgreater(s, this->name);
-	}
-	bool operator>=(const string& s) {
-		return isgreater(s, this->name) || isequals(s, this->name);
-	}
-	bool operator<=(const string& s) {
-		return issmaller(s, this->name) || isequals(s, this->name);
-	}
-	bool operator<(const string& s) {
-		return issmaller(s, this->name);
-	}
-	bool operator==(const string& s) {
-		return isequals(s, this->name);;
+	bool operator<(const Station& s) {
+		int length = (s.name < name ? s.name.size() : name.size());
+		size_t i = 0;
+		for (; i < length; i++)
+		{
+			if (tolower(s.name[i]) > tolower(name[i]))return true;
+			else if (tolower(s.name[i]) < tolower(name[i]))return false;
+		}
+		if (s.name.size() == name.size())return false;
+		return s.name.size() > name.size();
 	}
 };
 

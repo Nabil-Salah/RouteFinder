@@ -8,26 +8,6 @@ class Subway
 private:
 	vector<Station> stations;
 	vector<Connection>connections;
-	bool binarySearchStation(string& s,int l,int r) {
-		if (r >= l) {
-			int mid = l + (r - l) / 2;
-
-			// If the element is present at the middle
-			// itself
-			if (stations[mid] == s)
-				return true;
-
-			// If element is smaller than mid, then
-			// it can only be present in left subarray
-			if (stations[mid] > s)
-				return binarySearchStation(s,l,mid-1);
-
-			// Else the element can only be present
-			// in right subarray
-			return binarySearchStation(s,mid+1,r);
-		}
-		return false;
-	}
 	bool binarySearchStation(Station& s, int l, int r) {
 		if (r >= l) {
 			int mid = l + (r - l) / 2;
@@ -62,11 +42,21 @@ public:
 		return s;
 	}
 	void addStation(string stationName) {
-		if (!binarySearchStation(stationName,0,stations.size()-1))
-			stations.push_back(Station(stationName));
+		Station searchStation{ stationName };
+		if (!binarySearchStation(searchStation, 0, stations.size() - 1))
+		{
+			int i = 0;
+			for (; i < stations.size(); i++)
+			{
+				if (searchStation <= stations[i])break;
+			}
+			if (i >= stations.size())stations.push_back(searchStation);
+			else stations.insert(stations.begin() + i, searchStation);
+		}
 	}
 	bool hasStation(string stationName) {
-		return (binarySearchStation(stationName, 0, stations.size()-1));
+		Station searchStation{ stationName };
+		return (binarySearchStation(searchStation, 0, stations.size()-1));
 	}
 	void addConnection(string station1Name, string station2Name, string lineName) {
 		if (hasStation(station1Name) && hasStation(station2Name)) {

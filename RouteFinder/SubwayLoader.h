@@ -25,15 +25,12 @@ public:
 		{
 			if (lineName.size() <= 1)break;
 			string station1, station2;
-			infile >> station1; 
-			infile >> station2;
-			while (true)
+			getline(infile , station1); 
+			while (getline(infile, station2))
 			{
+				if (station1.size() <= 1 || station2.size() <= 1)break;
 				subway.addConnection(station1, station2, lineName);
-				getline(infile, station2);
-				if (station1.size() <= 1||station2.size() <=1)break;
-				
-				station1 = station2;
+				station1 = station2;				
 			}
 		}
 		infile.close();

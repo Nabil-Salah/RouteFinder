@@ -16,7 +16,7 @@ int main()
         else {
             cout << "station in Objecville test failed\n";
         }
-        if (objectville.hasConnection("Alex","mans","alexo")) {
+        if (objectville.hasConnection("Alex","Damnohour","alexo")) {
             cout << "connection in Objecville test passed\n";
         }
         else {
