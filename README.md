@@ -21,3 +21,17 @@ we made an app that you give your starting point and dropping point and we give 
   
     -subwayprint class to be able to visualize output alone
   
+We used case-driven development by dividing our cases into two use cases
+
+    -case 1: load networks of subway lines
+    
+        -Represent Subway lines and stations along each line.
+        
+        -load multiple subway lines into the program.
+        
+    -case 2: get directions
+    
+        -Figure out the valid route between two stations.
+        
+        -Print directions for a particular route.
+        
