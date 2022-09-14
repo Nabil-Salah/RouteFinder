@@ -29,7 +29,9 @@ public:
 			while (getline(infile, station2))
 			{
 				if (station1.size() <= 1 || station2.size() <= 1)break;
-				subway.addConnection(station1, station2, lineName);
+				string cost;
+				getline(infile, cost);
+				subway.addConnection(station1, station2, lineName,stoi(cost));
 				station1 = station2;				
 			}
 		}

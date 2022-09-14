@@ -3,8 +3,6 @@
 #include "SubwayPrinter.h"
 using namespace std;
 
-
-
 int main()
 {
     SubwayLoader loader{};

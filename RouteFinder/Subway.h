@@ -89,8 +89,8 @@ public:
 	void addConnection(string station1Name, string station2Name, string lineName,int cost = 1) {
 		if (hasStation(station1Name) && hasStation(station2Name)) {
 			Station station1{ station1Name }, station2{ station2Name };
-			addToNetwork(station1, station2);
-			addToNetwork(station2, station1);
+			addToNetwork(station1, station2,cost);
+			addToNetwork(station2, station1,cost);
 			Connection connection{ station1,station2,lineName,cost },
 						connectionVice{ station2,station1,lineName,cost };
 			connections.push_back(connection);
